@@ -7,7 +7,10 @@ This is an example custom controller built using CompositeController API by Meta
 ### Prerequisites
 
 * Install [Metacontroller](https://github.com/GoogleCloudPlatform/metacontroller)
-
+### Create a namespace
+```s
+kubectl create namespace namespacea
+```
 ### Deploy the controller
 
 ```sh
