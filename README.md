@@ -14,13 +14,13 @@ kubectl create namespace namespacea
 ### Deploy the controller
 
 ```s
-kubectl -n namespacea create configmap test-controller --from-file=sync.py
 kubectl apply -f controller.yaml
 ```
 
 ### Create a Webhook service
 
 ```s
+kubectl -n namespacea create configmap test-controller --from-file=sync.py
 kubectl apply -f webhook.yaml
 ```
 ### Define a custom resource using CRD and create an instance of the custom resource
