@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-controller
+  namespace: namespacea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-controller
+  template:
+    metadata:
+      labels:
+        app: test-controller
+    spec:
+      containers:
+      - name: controller
+        image: python:2.7
+        command: ["python", "/hooks/sync.py"]
+        volumeMounts:
+        - name: hooks
+          mountPath: /hooks
+      volumes:
+      - name: hooks
+        configMap:
+          name: test-controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-controller
+  namespace: namespacea
+spec:
+  selector:
+    app: test-controller
+  ports:
+  - port: 80
+...
